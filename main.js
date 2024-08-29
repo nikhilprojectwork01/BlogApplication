@@ -31,18 +31,7 @@ async function main() {
 //session storing 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const store = MongoStore.create({
-  mongoUrl: process.env.MONGO_URL,
-  crypto: {
-    secret: process.env.SECRET
-  },
-  touchAfter: 24 * 3600
-});
-store.on("error", () => {
-  console.log("Error in Mongo Session store ", err)
-})
 app.use(session({
-  store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
@@ -50,7 +39,14 @@ app.use(session({
     expires: Date.now() + 10 * 24 * 60 * 60 * 1000,
     maxAge: 10 * 24 * 60 * 60 * 1000,
     httpOnly: true
-  }
+  },
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URL,
+    crypto: {
+      secret: process.env.SECRET
+    },
+    touchAfter: 24 * 3600
+  })
 }));
 
 // Authentication Part 
