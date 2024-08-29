@@ -21,11 +21,12 @@ const multer = require('multer')
 const { storage } = require("./Cloud_Config.js");
 // Establish  connection with the database  
 const mongoose = require('mongoose');
+let url = process.env.MONGO_URL
 main().then(() => {
   console.log("Connection Establish with the mongdb");
 }).catch(err => console.log(err));
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL)
+  await mongoose.connect(url)
 }
 
 //session storing 
@@ -41,7 +42,7 @@ app.use(session({
     httpOnly: true
   },
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URL,
+    mongoUrl: url,
     crypto: {
       secret: process.env.SECRET
     },
