@@ -1,0 +1,28 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="new-main-section">
+    <h3>Create New One</h3>
+    <form action="/Blog/new" class="new-form needs-validation" novalidate method="post" enctype="multipart/form-data">
+      <input type="file" placeholder="Enter image url" name="Blog[image]" required class="form-control">
+      <div class="valid-feedback">
+        url Found!
+      </div>
+      <div class="invalid-feedback">
+        Please Enter Url
+      </div>
+      <br />
+      <textarea placeholder="Enter Message" class="form-control new-text" name="Blog[message]" required></textarea>
+      <div class="valid-feedback">
+        Nice message
+      </div>
+      <div class="invalid-feedback">
+        Please Enter Some Message
+      </div>
+      <select name="Blog[title]" class="custom-select" required>
+        <option value="Software" default>Software</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Market">Market</option>
+        <option value="News">News</option>
+      </select>
+      <button class="delete" type="submit">Post</button>
+    </form>
+  </div>

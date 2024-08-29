@@ -1,0 +1,147 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="main-view-section ">
+    <div class="user-profile-icon-section">
+      <div class="header-section">
+        <div class="icon-sections">
+          <img width="100" height="100" src="https://img.icons8.com/fluency/50/user-male-circle.png"
+            alt="user-male-circle" />
+        </div>
+        <div class="usename-section">
+          <h2>
+            @<%=data.Owner.username%>
+          </h2>
+        </div>
+      </div>
+      <div class="footer-sections">
+        <div class="image-post">
+          <img src="<%=data.image%>" alt="post image">
+        </div>
+        <div class="comment-froms-section">
+          <%if(Curruser){%>
+            <div class="comment-from">
+              <form method="Post" action="/Blog/Comment/<%=data.id%>" class="comments">
+                <textarea name="Comment[message]" placeholder="Comment Here" required></textarea>
+                <div class="btns">
+                  <button class="comments-delete" type="submit">Comment</button>
+                </div>
+              </form>
+            </div>
+            <%}%>
+        </div>
+      </div>
+    </div>
+    <div class="message-section-post">
+      <div class="message-section">
+        <h4>
+          <%=data.message%>
+        </h4>
+      </div>
+      <div class="comment-message-section">
+        <h3>Comments:</h3>
+        <div class="message-wraper">
+          <% for(datas of data.Comment){%>
+            <div class="comment-div-sections">
+              <p>
+                <%=datas.message%>
+              </p>
+              <p style="color: blue;">
+                @<%=datas.Owner.username%>
+              </p>
+              <%if(Curruser && Curruser._id.equals(datas.Owner._id)){%>
+                <form action="/Blog/<%=datas.id%>/delete/<%=data.id%>?_method=DELETE" class="delete-comment-froms"
+                  method="Post">
+                  <button class="message-dele">Delete</button>
+                </form>
+                <%}%>
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="main-view-section">
+    <div class="view-image-section">
+      <img src="<%=data.image%>" alt="image section">
+    </div>
+    <div class="view-title-section">
+      <div class="user-name-section">
+        <h1>
+        </h1>
+      </div>
+      <div class="view-message-section">
+        <p>
+          <%=data.message%>
+        </p>
+      </div>
+      <%if(Curruser && Curruser._id.equals(data.Owner._id)){%>
+        <div class="button-section">
+          <button class="edit"><a href="/Blog/Edit/<%=data.id%>">Edit</a></button>
+          <form action="/Blog/<%=data.id%>/delete?_method=DELETE" class="delete-button-from" method="post">
+            <button class="delete">Delete</button>
+          </form>
+        </div>
+        <%}%>
+          <%if(Curruser){%>
+            <div class="comment-section">
+              <form method="Post" action="/Blog/Comment/<%=data.id%>">
+                <textarea name="Comment[message]" placeholder="Comment Here" required></textarea>
+                <button class="delete comment-delete" type="submit">Comment</button>
+              </form>
+            </div>
+            <%}%>
+              <div class="comment-show-route">
+                <p>Comments</p>
+                <% for(datas of data.Comment){%>
+                  <div class="comment-div-section">
+                    <p>
+                      <%=datas.message%>
+                    </p>
+                    <p>
+                      @<%=datas.Owner.username%>
+                    </p>
+                    <%if(Curruser && Curruser._id.equals(datas.Owner._id)){%>
+                      <form action="/Blog/<%=datas.id%>/delete/<%=data.id%>?_method=DELETE" class="delete-comment-froms"
+                        method="Post">
+                        <button class="message-delete">Delete</button>
+                      </form>
+                      <%}%>
+                  </div>
+                  <% } %>
+              </div>
+    </div>
+  </div> -->

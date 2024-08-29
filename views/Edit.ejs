@@ -1,0 +1,26 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="main-preview-section">
+    <div class="image-preview">
+      <img src="<%=data.image%>" alt="image">
+    </div>
+    <div class="new-main-section">
+      <h3>Create New One</h3>
+      <form action="/Blog/new/<%=data.id%>/edit?_method=Patch" class="new-form needs-validation" novalidate
+        enctype="multipart/form-data" method="post">
+        <input type="file" placeholder="Enter image url" name="Blog[image]" required class="form-control">
+        <div class="valid-feedback">
+          Upload your File
+        </div>
+        <div class="invalid-feedback">
+          Upload your File
+        </div>
+        <br />
+        <textarea placeholder="Enter Message" class="form-control new-text" name="Blog[message]"
+          required><%=data.message%></textarea>
+        <div class="valid-feedback">
+          Nice message
+        </div>
+        <button class="delete" type="submit">Post</button>
+      </form>
+    </div>
+  </div>

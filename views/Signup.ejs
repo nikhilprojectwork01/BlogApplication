@@ -1,0 +1,47 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="signup">
+    <div class="signup-image">
+      <img src="https://www.studytienganh.vn/upload/2021/04/95496.jpg" alt="Lofin Wallpaper">
+    </div>
+    <h1>Create Account</h1>
+    <div class="signup-section">
+      <div class="singup-form">
+        <form action="/Authentication/Singup" method="POST" class="needs-validation" novalidate>
+          <div class="Username">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter User Name" required
+              name="username">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+          <div class="Emial">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+              name="email" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please Enter Email
+            </div>
+          </div>
+          <div class="userPassword">
+            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Enter valid password"
+              name="password" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please Enter Strong Password.
+            </div>
+          </div>
+      </div>
+      <div class="singup-button">
+        <button class="edit" type="submit">Signup</button>
+        <a href="/Authentication/Login">? Alredy have an Account</a>
+      </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="main-user-data-section">
+    <div class="user-profile-section">
+      <div class="icon-section">
+        <img width="100" height="100" src="https://img.icons8.com/fluency/50/user-male-circle.png"
+          alt="user-male-circle" />
+      </div>
+      <div class="user-detail-section">
+        <h3>
+          @<%=Curruser.username%>
+        </h3>
+        <p>
+          <%=Curruser.email%>
+        </p>
+      </div>
+    </div>
+    <div class="main-post-section">
+      <%for(info of data){%>
+        <div class="individua-item-section">
+          <div class="post-image-section">
+            <img src="<%=info.image%>" alt="image">
+          </div>
+          <div class="content">
+            <p>
+              <%=info.message%>
+            </p>
+            <p>
+            <div class="button-user-profile">
+              <button class="edit edits"><a href="/Blog/Edit/<%=info.id%>">Edit</a></button>
+              <form action="/Blog/<%=info.id%>/delete?_method=DELETE" class="delete-button-froms" method="post">
+                <button class="delete">Delete</button>
+            </div>
+            </form>
+            </p>
+          </div>
+        </div>
+        <%}%>
+    </div>
+  </div>

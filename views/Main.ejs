@@ -1,0 +1,19 @@
+<%- layout("./layout/boilerplate.ejs") -%>
+  <div class="main-card-section">
+    <%for(info of data){%>
+      <div class="card" style="width: 18rem;">
+        <div class="card-image">
+          <img class="card-img-top" src="<%=info.image%>" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" style="color: tomato;">
+            @<%=info.Owner.username%>
+          </h5>
+          <p class="card-text">
+            <%=info.message%>
+          </p>
+          <a href="/Blog/<%=info.id%>/show" class="btn btn-primary">Know More</a>
+        </div>
+      </div>
+      <%}%>
+  </div>
